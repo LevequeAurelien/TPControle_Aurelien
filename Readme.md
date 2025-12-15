@@ -3,7 +3,18 @@
 Lancement du projet 
 ######
 
+- installer mon application
+- dans ce projet lancer les commandes suivantes :
+- docker-compose up --build
+- vous pouvez maintenant aller sur le lien suivant:
+- http://localhost:8090/ -> Attention le port est bien 8090.
 
+pour pouvoir tester le volume :
+- incrementer le nombre 
+- docker-compose down
+- docker-compose up
+
+Et voilà, merci d'avoir essayé mon application.
 
 
 
