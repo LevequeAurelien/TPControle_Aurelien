@@ -67,7 +67,6 @@ comme la sécurité, à l'aide de Gemini Pro.
 Dans ce code, on retrouve mon image (image on registry) sur mon compte Docker Hub.
 
 Ainsi que le scan + report avec ce code :
-YAML
 
 ##
   security-audit:
@@ -83,3 +82,7 @@ YAML
 ##
 
 Cela est donc stocké dans le fichier security-report.txt dans ce projet.
+
+# security-report.txt
+Ce fichier donne le scan + report de l'application avec les vulnérabilités
+vous pouvez le voir directement sur mon dépot git.
