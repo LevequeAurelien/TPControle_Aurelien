@@ -1,6 +1,6 @@
 
 ######
-Lancement du projet 
+# Lancement du projet 
 ######
 
 - installer mon application
@@ -19,11 +19,11 @@ Et voilà, merci d'avoir essayé mon application.
 
 
 #####
-Envie d'en savoir plus sur mon code...
+# Envie d'en savoir plus sur mon code...
 #####
 
 #####
-requirements.txt
+# requirements.txt
 #####
 
 Le fichier requirements.txt nous donne toutes les librairies à installer. 
@@ -32,13 +32,13 @@ Pour cela, voici les librairies installées : flask flask-sqlalchemy psycopg2-bi
 Elles serviront principalement pour l'interface.
 
 #####
-.dockerignore
+# .dockerignore
 #####
 
 Le fichier .dockerignore sert à alléger l'image en ignorant les différents fichiers qu'il contient.
 
 #####
-Dockerfile
+# Dockerfile
 #####
 
 Au début, j'ai opté pour un Dockerfile "simple" :
@@ -48,11 +48,9 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-# Installation des dépendances
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# Copie du code
 COPY . .
 
 CMD ["python", "app.py"]
@@ -63,7 +61,7 @@ Je l'ai donc adapté pour qu'il utilise le multi-stage et le reste des bonnes pr
 comme la sécurité, à l'aide de Gemini Pro.
 
 #####
-Docker-compose.yml
+# Docker-compose.yml
 #####
 
 Dans ce code, on retrouve mon image (image on registry) sur mon compte Docker Hub.
