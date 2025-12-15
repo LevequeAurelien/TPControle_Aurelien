@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  # --- Application Python ---
+  web:
+    # On donne le nom officiel pour le registre
+    image: levequeaurelien/compteur-python:v1
+    build: .
+    container_name: compteur-app
+    ports:
+      - "8090:8080"
+    environment:
+      - DB_URL=postgresql://postgres:password@db:5432/compteurdb
+    depends_on:
+      - db
+
+  # --- Base de Données ---
+  db:
+    image: postgres:15-alpine
+    container_name: compteur-db
+    environment:
+      - POSTGRES_DB=compteurdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - compteur_data:/var/lib/postgresql/data
+
+  # --- Audit de Sécurité ---
+  security-audit:
+    image: aquasec/trivy:latest
+    container_name: security-audit
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - .:/output
+    # On scanne bien la nouvelle image nommée
+    command: image --format table --output /output/security-report.txt levequeaurelien/compteur-python:v1
+    depends_on:
+      - web
+
+volumes:
+  compteur_data:
